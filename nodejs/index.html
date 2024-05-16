@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="todoInput" placeholder="Enter todo">
+    <button onclick="addTodo()">Add Todo</button>
+    <ul id="todoList"></ul>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => console.log('Service Worker registered'))
+                    .catch(error => console.log('Service Worker registration failed:', error));
+            });
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
